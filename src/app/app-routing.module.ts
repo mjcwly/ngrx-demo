@@ -5,11 +5,14 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'heroes' },
   {
     path: 'heroes',
-    loadChildren: () => import('app/heroes/heroes.module').then(m => m.HeroesModule)
+    loadChildren: () => import('./heroes/heroes.module').then(m => m.HeroesModule)
   },
   {
     path: 'villains',
-    loadChildren: () => import('app/villains/villains.module').then(m => m.VillainsModule)
+    loadChildren: () => import('./villains/villains.module').then(m => m.VillainsModule)
+  },
+  { path: 'clock-setup', 
+    loadChildren: () => import('./clock-setup/clock-setup.module').then(m => m.ClockSetupModule) 
   }
 ];
 

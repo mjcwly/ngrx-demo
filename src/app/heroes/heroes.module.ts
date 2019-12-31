@@ -9,9 +9,21 @@ import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../material/material.module';
 
 @NgModule({
-  imports: [CommonModule, SharedModule, MaterialModule, HeroesRoutingModule],
-  exports: [HeroesComponent, HeroDetailComponent],
-  declarations: [HeroesComponent, HeroDetailComponent, HeroListComponent],
+  imports: [
+    CommonModule, 
+    SharedModule, 
+    MaterialModule, 
+    HeroesRoutingModule
+  ],
+  declarations: [
+    HeroesComponent, 
+    HeroDetailComponent, 
+    HeroListComponent
+  ],
+  exports: [
+    HeroesComponent, 
+    HeroDetailComponent
+  ],
   providers: []
 })
 export class HeroesModule {}

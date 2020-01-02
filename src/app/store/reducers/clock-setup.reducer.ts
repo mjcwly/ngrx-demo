@@ -46,7 +46,10 @@ const clockSetupReducer = createReducer(
     let newState = { ...state };
     newState.mode++;
     newState.instructions = modeInstructions[newState.mode];
-    if (newState.mode === 5) newState.mode = 0;
+    if (newState.mode === 5) {
+      newState.mode = 0;
+      newState.instructions = modeInstructions[0];
+    }
     return newState
   }),
 

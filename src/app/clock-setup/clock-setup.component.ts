@@ -10,13 +10,13 @@ import { Observable } from 'rxjs';
 })
 export class ClockSetupComponent implements OnInit {
   
-  clockSetup$: Observable<string>;
+  dateTime$: Observable<string>;
 
   constructor(
     private clockSetupDispatchers: ClockSetupDispatchers,
     private clockSetupSelectors: ClockSetupSelectors
   ) { 
-    this.clockSetup$ = this.clockSetupSelectors.clockSetup$;
+    this.dateTime$ = this.clockSetupSelectors.dateTime$;
   }
 
   ngOnInit() { }

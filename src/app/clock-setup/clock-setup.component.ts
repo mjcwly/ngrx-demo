@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClockSetupDispatchers } from '../store/services/clock-setup.dispatchers';
 
 @Component({
   selector: 'app-clock-setup',
@@ -7,19 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClockSetupComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private clockSetupDispatchers: ClockSetupDispatchers
+  ) { }
 
   ngOnInit() { }
 
   onLeftButtonClicked() {
     console.log("Left Button Clicked");
+    this.clockSetupDispatchers.previousValue();
   }
-
+  
   onSetButtonClicked() {
     console.log("Set Button Clicked");
+    this.clockSetupDispatchers.selectValue();
   }
-
+  
   onRightButtonClicked() {
     console.log("Right Button Clicked");
+    this.clockSetupDispatchers.nextValue();
   }
 }

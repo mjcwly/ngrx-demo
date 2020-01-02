@@ -4,6 +4,7 @@ export * from './reducers';
 export * from './services';
 
 import {
+  ClockSetupDispatchers,
   HeroDispatchers,
   HeroHttpDispatchers,
   HeroDataService,
@@ -14,6 +15,7 @@ import {
 } from './services';
 
 export const services = [
+  ClockSetupDispatchers,
   HeroDataService,
   HeroDispatchers,
   HeroHttpDispatchers,

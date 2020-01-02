@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClockSetupDispatchers } from '../store/services/clock-setup.dispatchers';
+import { ClockSetupSelectors } from '../store/services/clock-setup.selectors';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-clock-setup',
@@ -7,10 +9,15 @@ import { ClockSetupDispatchers } from '../store/services/clock-setup.dispatchers
   styleUrls: ['./clock-setup.component.scss']
 })
 export class ClockSetupComponent implements OnInit {
+  
+  clockSetup$: Observable<string>;
 
   constructor(
-    private clockSetupDispatchers: ClockSetupDispatchers
-  ) { }
+    private clockSetupDispatchers: ClockSetupDispatchers,
+    private clockSetupSelectors: ClockSetupSelectors
+  ) { 
+    this.clockSetup$ = this.clockSetupSelectors.clockSetup$;
+  }
 
   ngOnInit() { }
 

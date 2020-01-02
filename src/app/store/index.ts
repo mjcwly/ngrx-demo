@@ -5,6 +5,7 @@ export * from './services';
 
 import {
   ClockSetupDispatchers,
+  ClockSetupSelectors,
   HeroDispatchers,
   HeroHttpDispatchers,
   HeroDataService,
@@ -16,6 +17,7 @@ import {
 
 export const services = [
   ClockSetupDispatchers,
+  ClockSetupSelectors,
   HeroDataService,
   HeroDispatchers,
   HeroHttpDispatchers,

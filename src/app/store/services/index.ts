@@ -9,3 +9,4 @@ export * from './hero.selectors';
 export * from './villain.selectors';
 
 export * from './clock-setup.dispatchers'
+export * from './clock-setup.selectors'

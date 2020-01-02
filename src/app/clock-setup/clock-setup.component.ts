@@ -11,12 +11,14 @@ import { Observable } from 'rxjs';
 export class ClockSetupComponent implements OnInit {
   
   dateTime$: Observable<string>;
+  instructions$: Observable<string>;
 
   constructor(
     private clockSetupDispatchers: ClockSetupDispatchers,
     private clockSetupSelectors: ClockSetupSelectors
   ) { 
     this.dateTime$ = this.clockSetupSelectors.dateTime$;
+    this.instructions$ = this.clockSetupSelectors.instructions$;
   }
 
   ngOnInit() { }

@@ -7,7 +7,16 @@ export interface ClockSetupState {
   year: number,
   hours: number,
   minutes: number,
-  mode: number
+  mode: number,
+  instructions: string
+}
+
+const modeInstructions = {
+  0: "Please set the Year",
+  1: "Please set the Month",
+  2: "Please set the Day",
+  3: "Please set the Hours",
+  4: "Please set the Minutes",
 }
 
 export const initialState: ClockSetupState = {
@@ -16,7 +25,8 @@ export const initialState: ClockSetupState = {
   year: new Date().getFullYear(),
   hours: new Date().getHours(),
   minutes: new Date().getMinutes(),
-  mode: 0
+  mode: 0,
+  instructions: modeInstructions[0]
 };
 
 const clockSetupReducer = createReducer(
@@ -35,6 +45,7 @@ const clockSetupReducer = createReducer(
   on(ClockSetupActions.selectValue, state => {
     let newState = { ...state };
     newState.mode++;
+    newState.instructions = modeInstructions[newState.mode];
     if (newState.mode === 5) newState.mode = 0;
     return newState
   }),

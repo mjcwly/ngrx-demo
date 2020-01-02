@@ -22,6 +22,7 @@ const getDay = createSelector(getEntityState, (state: EntityState) => state.cloc
 const getHours = createSelector(getEntityState, (state: EntityState) => state.clockSetup.hours);
 const getMinutes = createSelector(getEntityState, (state: EntityState) => state.clockSetup.minutes);
 const getMode = createSelector(getEntityState, (state: EntityState) => state.clockSetup.mode);
+const getInstructions = createSelector(getEntityState, (state: EntityState) => state.clockSetup.instructions);
 
 @Injectable()
 export class ClockSetupSelectors {
@@ -33,4 +34,5 @@ export class ClockSetupSelectors {
   hours$ = this.store.select(getHours);
   minutes$ = this.store.select(getMinutes);
   mode$ = this.store.select(getMode);
+  instructions$ = this.store.select(getInstructions);
 }

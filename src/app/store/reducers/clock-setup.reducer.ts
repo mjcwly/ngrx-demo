@@ -1,13 +1,15 @@
 import { Action, createReducer, on } from "@ngrx/store";
 import * as ClockSetupActions from '../actions/clock-setup.actions';
 
+export enum ClockSetupMode { Default, SetYear, SetMonth, SetDay, SetHours, SetMinutes };
+
 export interface ClockSetupState {
   day: number,
   month: number,
   year: number,
   hours: number,
   minutes: number,
-  mode: number
+  mode: ClockSetupMode
 }
 
 export const initialState: ClockSetupState = {
@@ -16,7 +18,7 @@ export const initialState: ClockSetupState = {
   year: new Date().getFullYear(),
   hours: new Date().getHours(),
   minutes: new Date().getMinutes(),
-  mode: 0
+  mode: ClockSetupMode.Default
 };
 
 const clockSetupReducer = createReducer(
@@ -24,28 +26,32 @@ const clockSetupReducer = createReducer(
 
   on(ClockSetupActions.previousValue, state => {
     let newState = { ...state };
-    if (state.mode === 0) newState.year--;
-    if (state.mode === 1) newState.month--;
-    if (state.mode === 2) newState.day--;
-    if (state.mode === 3) newState.hours--;
-    if (state.mode === 4) newState.minutes--;
+    if (state.mode === ClockSetupMode.SetYear) newState.year--;
+    if (state.mode === ClockSetupMode.SetMonth) newState.month--;
+    if (state.mode === ClockSetupMode.SetDay) newState.day--;
+    if (state.mode === ClockSetupMode.SetHours) newState.hours--;
+    if (state.mode === ClockSetupMode.SetMinutes) newState.minutes--;
     return newState
   }),
 
   on(ClockSetupActions.selectValue, state => {
     let newState = { ...state };
-    newState.mode++;
-    if (newState.mode === 5) newState.mode = 0;
+    if (state.mode === ClockSetupMode.Default) newState.mode = ClockSetupMode.SetYear;
+    if (state.mode === ClockSetupMode.SetYear) newState.mode = ClockSetupMode.SetMonth;
+    if (state.mode === ClockSetupMode.SetMonth) newState.mode = ClockSetupMode.SetDay;
+    if (state.mode === ClockSetupMode.SetDay) newState.mode = ClockSetupMode.SetHours;
+    if (state.mode === ClockSetupMode.SetHours) newState.mode = ClockSetupMode.SetMinutes;
+    if (state.mode === ClockSetupMode.SetMinutes) newState.mode = ClockSetupMode.Default;
     return newState
   }),
 
   on(ClockSetupActions.nextValue, state => {
     let newState = { ...state };
-    if (state.mode === 0) newState.year++;
-    if (state.mode === 1) newState.month++;
-    if (state.mode === 2) newState.day++;
-    if (state.mode === 3) newState.hours++;
-    if (state.mode === 4) newState.minutes++;
+    if (state.mode === ClockSetupMode.SetYear) newState.year++;
+    if (state.mode === ClockSetupMode.SetMonth) newState.month++;
+    if (state.mode === ClockSetupMode.SetDay) newState.day++;
+    if (state.mode === ClockSetupMode.SetHours) newState.hours++;
+    if (state.mode === ClockSetupMode.SetMinutes) newState.minutes++;
     return newState
   }),
 
@@ -54,3 +60,5 @@ const clockSetupReducer = createReducer(
 export function reducer(state: ClockSetupState | undefined, action: Action) {
   return clockSetupReducer(state, action);
 }
+
+

@@ -1,31 +1,45 @@
 <div class="control-panel">
-  <div class="button-panel">
+  <div *ngFor="let m of [mode$ | async]" class="text-center">
+    <h1 class="inline digit">{{ day$ | async }}</h1>
+    &nbsp;
+    <h1 class="inline digit">{{ month$ | async }}</h1>
+    &nbsp;
+    <h1 class="inline digit">{{ year$ | async }}</h1>
+    <br>
+    <h1 class="inline digit">{{ hours$ | async }}</h1>
+    <h1 class="inline">:</h1>
+    <h1 class="inline digit">{{ minutes$ | async }}</h1>
+  </div>
+  <div class="button-panel text-center">
     <button
+      class="large"
       mat-raised-button
       color="primary"
       type="button"
       (click)="onLeftButtonClicked()"
-      matTooltip="Rotate Knob Left">
+      matTooltip="Previous">
     <<
   </button>
   <button
+      class="large"
       mat-raised-button
       color="primary"
       type="button"
       (click)="onSetButtonClicked()"
-      matTooltip="Push Knob">
+      matTooltip="Set">
     Set
   </button>
   <button
+      class="large"
       mat-raised-button
       color="primary"
       type="button"
       (click)="onRightButtonClicked()"
-      matTooltip="Rotate Knob Right">
+      matTooltip="Next">
     >>
   </button>
   </div>
-  <h1>{{ dateTime$ | async }}</h1>
+  
 </div>
 <div class="content-container">
   <div class="list-container">

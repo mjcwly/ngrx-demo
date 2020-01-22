@@ -6,3 +6,30 @@
 .content-container {
   @include content-container-layout;
 }
+
+h1{
+  font-size: 60pt;
+}
+
+.digit {
+  border: 5px solid #000000; 
+  padding: 10px; 
+  border-radius: 20px; 
+  margin: 10px 0 0 0;
+  background: #cccccc;
+}
+
+.inline {
+  display: inline-block; 
+  margin: 10px 0 0 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.large {
+  margin: 10px 5px 0 5px;
+  font-size: 40pt;
+  padding: 15px;
+}

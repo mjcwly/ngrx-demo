@@ -102,7 +102,6 @@ export class HourState implements IClockSetupState {
   }
 
   selectValue() {
-    this.context.currentState = 
     this.context.currentState = this.context.minuteState;
   }
 

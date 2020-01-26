@@ -167,7 +167,7 @@ export class ClockSetup {
 }
 
 
-export class ClockSetupState {
+export interface ClockSetupState {
   clockSetup: ClockSetup
 }
 
@@ -180,19 +180,19 @@ const clockSetupReducer = createReducer(
 
   on(ClockSetupActions.previousValue, state => {
     let newState = { ...state };
-    newState.clockSetup.currentState.previousValue();
+    newState.clockSetup.previousValue();
     return newState
   }),
 
   on(ClockSetupActions.selectValue, state => {
     let newState = { ...state };
-    newState.clockSetup.currentState.selectValue();
+    newState.clockSetup.selectValue();
     return newState
   }),
 
   on(ClockSetupActions.nextValue, state => {
     let newState = { ...state };
-    newState.clockSetup.currentState.selectValue();
+    newState.clockSetup.nextValue();
     return newState
   }),
 
